@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>java is to javascript</title>
+</head>
+    
+<body>
+    
+    
+<script>
+    /*
+     * 6/29/2019
+     * 
+     * Java is to JavaScript as car is to carpet.
+     * 
+     * https://codegolf.stackexchange.com/questions/132272/java-is-to-javascript-as-car-is-to-carpet
+     * 
+     * Write a program which takes in a string as input. Return car if the string begins with "java" 
+     * and does not include "javascript". Otherwise, return carpet.
+     * 
+     */
+    const inputStrings = ["java", "JavA", "javafx", "javabeans", "java-stream", 
+        "java-script", "java-8", "java.util.scanner", "java-avascript", "JAVA-SCRIPTING",
+        "javacarpet", "javascript", "JAVAscrIPT", "javascript-events", 
+        "facebook-javascript-sdk", "javajavascript", "jquery", "python", "rx-java",
+        "java-api-for-javascript", "not-java", "JAVASCRIPTING"];
+    
+    for (let i = 0; i < inputStrings.length; i++) {
+        console.log(inputStrings[i]);
+        console.log(checkStrings(inputStrings[i]));
+        console.log(" ");
+    }
+    
+    function checkStrings(inputStr) {
+        inputStr = inputStr.toLowerCase();
+        if (inputStr.substr(0, 4) === "java") {
+            if (inputStr.indexOf("javascript") === -1) {
+                // String began with "java" and did not contain "javascript".
+                return "car";
+            }
+            
+            // Input string contained "javascript".
+            return "carpet";
+        }
+        
+        // Input string did not start with "java".
+        return "carpet";
+    }
+</script>    
+    
+</body>    
+</html>
