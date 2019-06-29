@@ -14,9 +14,9 @@ class JavaIsToJavascript {
 	public static void main(String[] args) {
 		// Create array of test strings.
 		String[] inputStrings = {"java", "javafx", "javabeans", "JavaBeanS", "java-stream", "java-script", "java-8", 
-				"java.util.scanner", "java-avascript", "JAVA-SCRIPTING", "javacarpet", "javascript", "javascript-events",
-				"facebook-javascript-sdk", "javajavascript", "jquery", "python", "rx-java", "java-api-for-javascript",
-				"not-java", "JAVASCRIPTING"};
+				"java.util.scanner", "java-avascript", "JAVA-SCRIPTING", "javacarpet", "javascript", 
+				"javascript-events", "facebook-javascript-sdk", "javajavascript", "jquery", "python", "rx-java", 
+				"java-api-for-javascript", "not-java", "JAVASCRIPTING"};
 		
 		
 		for (String inputStr : inputStrings) {
@@ -33,7 +33,7 @@ class JavaIsToJavascript {
 				return "car";
 			}
 			
-			// String did not contain "javascript".
+			// String contained "javascript".
 			return "carpet";
 		}
 		
