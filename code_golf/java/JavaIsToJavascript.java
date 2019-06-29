@@ -1,5 +1,7 @@
 /*
  * 6/28/2019
+ *
+ * Java is to JavaScript as car is to carpet.
  * 
  * https://codegolf.stackexchange.com/questions/132272/java-is-to-javascript-as-car-is-to-carpet
  * 
