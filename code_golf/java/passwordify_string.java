@@ -16,7 +16,8 @@
 public class PasswordifyString {
 	
 	public static void main(String[] args) {
-		String[] inputStrings = {"1pass 2word3 ", "Jessie Edmisten", "12asdfg34qwert56zx", "Hello world", "pa55w0rd", "14 35", "0971", " "};
+		String[] inputStrings = {"1pass 2word3 ", "Jessie Edmisten", "12asdfg34qwert56zx", "Hello world", 
+						"pa55w0rd", "14 35", "0971", " "};
 		
 		for (String inputStr : inputStrings) {
 			System.out.println(inputStr);
