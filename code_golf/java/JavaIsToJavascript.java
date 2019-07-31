@@ -7,6 +7,7 @@
  * 
  * Write a program which takes in a string as input. Return car if the string begins with "Java" 
  * and does not include "JavaScript". Otherwise, return carpet.
+ * Input matching should be case insensitive.
  * 
  */
 class JavaIsToJavascript {
