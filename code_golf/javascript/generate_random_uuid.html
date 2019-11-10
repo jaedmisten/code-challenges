@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<!--
+11/10/2019
+ 
+Generate random UUID.
+ 
+code golf link:  https://codegolf.stackexchange.com/questions/58442/generate-random-uuid?rq=1
+ 
+Generate 32 random hexadecimal digits in the form 8-4-4-4-12 digits.
+example: ab13901d-5e93-1c7d-49c7-f1d67ef09198
+-->
+<head>
+	<meta charset="UTF-8">
+	<title>Generate Random UUID</title>
+	<style>
+		#wrapper {
+			text-align: center;
+		}
+		#uuid {
+			font-weight: bold;
+			font-size: 45px;
+		}
+	</style>
+</head>
+
+<body>		
+	<div id="wrapper">
+		<p id="uuid"></p>
+	</div>
+
+	<script type="text/javascript">
+		var uuid = "";
+		var hexChars = "0123456789ABCDEF";
+		var randValue;
+	
+		// Create 8 random hexadecimal digits.
+		for (let i = 0; i < 8; i++) {
+			randValue = Math.floor(Math.random() * (hexChars.length));
+			uuid += hexChars[randValue];
+		}
+		uuid += '-';			
+		// Create 3 groups of 4 random hexadecimal digits.
+		for (let i = 1; i <= 3; i++) {
+			for (let j = 0; j < 4; j++) {
+				randValue = Math.floor(Math.random() * (hexChars.length));
+				uuid += hexChars[randValue];
+			}
+			uuid += '-';
+		}
+		// Create 12 random hexadecimal digits.
+		for (let i = 0; i < 12; i++) {
+			randValue = Math.floor(Math.random() * (hexChars.length));
+			uuid += hexChars[randValue];
+		}
+		
+		// Display the UUID on the page.
+		var el = document.getElementById("uuid");
+		el.innerHTML = uuid;
+	</script>
+</body>
+</html>
