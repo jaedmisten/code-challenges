@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<!--
+ * 11/16/2019
+ *
+ * alphabet staircase
+ *
+ * code golf link:  https://codegolf.stackexchange.com/questions/147469/alphabet-staircase
+ *
+ * Create a program that outputs the following:
+ * a
+ * bb
+ * ccc
+ * dddd
+ * eeeee
+ * ffffff
+ * ...
+ *
+-->
+<head>
+    <meta charset="utf-8" />
+    <title>Alphabet Staircase</title>
+</head>
+
+<body>
+    <div id="staircase1"></div>
+    <br><br>
+    <div id="staircase2"></div>
+
+<script type="text/javascript">
+
+// Using a string of the alphabet.
+var alphabetStr = "abcdefghijklmnopqrstuvwxyz";
+var str = ""
+for (let i = 0; i < alphabetStr.length; i++) {
+	for (let j = 0; j < i + 1; j++) {
+		str += alphabetStr[i];
+	}
+	str += '<br>';
+}
+
+var el1 = document.getElementById("staircase1");
+el1.innerHTML = str;
+
+
+// Using an array of the alphabet.
+var alphabetArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+str = "";
+for (let i = 0; i < alphabetArr.length; i++) {
+	for (let j = 0; j < i + 1; j++) {
+		str += alphabetArr[i];
+	}
+	str += '<br>';
+}
+
+var el2 = document.getElementById("staircase2");
+el2.innerHTML = str;
+
+</script>
+</body>
+</html>
