@@ -1,3 +1,13 @@
+/*
+ * 11/25/2019
+ *
+ * https://projectlovelace.net/problems/scientific-temperatures/
+ *
+ * Write a function fahrenheit_to_celsius(F) that takes an input of Fahrenheit temperature 
+ * and converts it to Celsius.
+ * C = 5/9 (F - 32)
+ */
+ 
 using System;
 
 namespace ScientificTemperatures
