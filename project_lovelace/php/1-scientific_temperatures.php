@@ -1,17 +1,17 @@
 <?php
-	/*
-	 * 11/28/2019
-	 *
-	 * https://projectlovelace.net/problems/scientific-temperatures/
-	 *
-	 * Write a function fahrenheit_to_celsius(F) that takes an input of Fahrenheit temperature 
-	 * and converts it to Celsius.
-	 * C = 5/9 (F - 32)
-	 */
-    if ($_POST['fahrenheitTemp'] && $_POST['fahrenheitTemp'] != '') {
-        $fahrenheitTemp = $_POST['fahrenheitTemp'];
-        $celsiusTemp = ($fahrenheitTemp - 32) * (5/9);
-    }
+/*
+ * 11/28/2019
+ *
+ * https://projectlovelace.net/problems/scientific-temperatures/
+ *
+ * Write a function fahrenheit_to_celsius(F) that takes an input of Fahrenheit temperature 
+ * and converts it to Celsius.
+ * C = 5/9 (F - 32)
+ */
+if (isset($_POST['fahrenheitTemp']) && $_POST['fahrenheitTemp'] != '') {
+	$fahrenheitTemp = $_POST['fahrenheitTemp'];
+	$celsiusTemp = ($fahrenheitTemp - 32) * (5/9);
+}
 ?>
 <!DOCTYPE html>
 <html>
