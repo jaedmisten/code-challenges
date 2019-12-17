@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Rocket Science</title>
+</head>
+
+<body>
+<!--
+ 12/16/2019
+
+ This isn't rocket science.
+ 
+ code golf link:  https://codegolf.stackexchange.com/questions/91182/this-isnt-rocket-science
+ 
+ Write a program or function that takes in a single-line string. You can assume it only contains
+ printable ASCII. Print or return a string of an ASCII art rocket such as
+ 
+  |
+ /_\
+ |E|
+ |a|
+ |r|
+ |t|
+ |h|
+ |_|
+/___\
+ VvV
+
+-->
+
+<script>
+
+var input = "NASA";
+
+console.log("  |\n /_\\");
+for(let i = 0; i < input.length; i++) {
+	console.log(" |" + input[i] + "|");
+}
+console.log(" |_|\n/___\\\n VvV");
+
+</script>
+</body>
+</html>
