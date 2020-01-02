@@ -8,9 +8,9 @@
  * 
  * Haversine formula:
  *      a = sin²(Δφ/2) + cos φ1 ⋅ cos φ2 ⋅ sin²(Δλ/2)
- *      c = 2 * atan2( √a, √(1−a) )
- *      d = R * c
- *      where φ is latitude, λ is longitude, R is earth’s radius (mean radius = 6,372.1km);
+ *      c = 2 ⋅ atan2( √a, √(1−a) )
+ *      d = R ⋅ c
+ *      where φ is latitude, λ is longitude, R is earth’s radius (mean radius = 6,371km);
  *      note that angles need to be in radians to pass to trig functions.  
  */
 using System;
@@ -22,7 +22,7 @@ namespace FlightPaths
         static void Main(string[] args)
         {
             bool retryLatInput = true, retryLongInput = true;
-            float lat1Degree = 0, long1Degree = 0, lat2Degree = 0, long2Degree = 0;
+            float lat1Degrees = 0, long1Degrees = 0, lat2Degrees = 0, long2Degrees = 0;
 
             Console.WriteLine("Latitudes go from -90 to 90. Longitudes go from -180 to 180.");
 
@@ -35,9 +35,9 @@ namespace FlightPaths
                 
                 if (point1.Length == 2)
                 { 
-                    if (float.TryParse(point1[0], out lat1Degree))
+                    if (float.TryParse(point1[0], out lat1Degrees))
                     {
-                        if (lat1Degree >= -90 && lat1Degree <= 90)
+                        if (lat1Degrees >= -90 && lat1Degrees <= 90)
                         {
                             retryLatInput = false;
                         }
@@ -54,9 +54,9 @@ namespace FlightPaths
                     }
 
 
-                    if (float.TryParse(point1[1], out long1Degree))
+                    if (float.TryParse(point1[1], out long1Degrees))
                     {
-                        if (long1Degree >= -180 && long1Degree <= 180)
+                        if (long1Degrees >= -180 && long1Degrees <= 180)
                         {
                             retryLongInput = false;
                         }
@@ -94,9 +94,9 @@ namespace FlightPaths
 
                 if (point2.Length == 2)
                 {
-                    if (float.TryParse(point2[0], out lat2Degree))
+                    if (float.TryParse(point2[0], out lat2Degrees))
                     {
-                        if (lat2Degree >= -90 && lat2Degree <= 90)
+                        if (lat2Degrees >= -90 && lat2Degrees <= 90)
                         {
                             retryLatInput = false;
                         }
@@ -113,9 +113,9 @@ namespace FlightPaths
                     }
 
 
-                    if (float.TryParse(point2[1], out long2Degree))
+                    if (float.TryParse(point2[1], out long2Degrees))
                     {
-                        if (long2Degree >= -180 && long2Degree <= 180)
+                        if (long2Degrees >= -180 && long2Degrees <= 180)
                         {
                             retryLongInput = false;
                         }
@@ -146,12 +146,12 @@ namespace FlightPaths
 
 
             // Convert points from degrees to radians.
-            double lat1 = lat1Degree * (Math.PI / 180);
-            double lon1 = long1Degree * (Math.PI / 180);
-            double lat2 = lat2Degree * (Math.PI / 180);
-            double lon2 = long2Degree * (Math.PI / 180);
+            double lat1Radians = lat1Degrees * (Math.PI / 180);
+            double lon1Radians = long1Degrees * (Math.PI / 180);
+            double lat2Radians = lat2Degrees * (Math.PI / 180);
+            double lon2Radians = long2Degrees * (Math.PI / 180);
 
-            double distance = HaversineDistance(lat1, lon1, lat2, lon2);
+            double distance = HaversineDistance(lat1Radians, lon1Radians, lat2Radians, lon2Radians);
             Console.WriteLine("\nOutput distance: " + Math.Round(distance, 3) + " kilometers");
         }
 
