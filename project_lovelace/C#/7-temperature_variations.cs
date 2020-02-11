@@ -1,7 +1,7 @@
 /*
  * 1/18/2020
  * 
- * https://projectlovelace.net/problems/flight-paths/
+ * https://projectlovelace.net/problems/temperature-variations/
  * 
  * Write a program that takes a list of input temperatures and calculates and 
  * outputs the mean and standard deviation.
