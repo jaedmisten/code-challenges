@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * 7/7/2020
+ * 
+ * https://projectlovelace.net/problems/blood-types/
+ * 
+ * Write a program that takes input of a patient's blood type and input of the list
+ * of available blood types and determine if a compatible blood type is available.
+ * 
+ */
+using System;
 using System.Linq;
 
 namespace BloodTypes
@@ -12,7 +21,6 @@ namespace BloodTypes
 
             Console.Write("Input list of available blood types: ");
             var donatedBloodInput = Console.ReadLine();
-
             donatedBloodInput = donatedBloodInput.Trim('[', ']');
             var donatedBlood = donatedBloodInput.Split(new string[] {", "}, StringSplitOptions.None).Select(bt => bt.Trim('\"', '\"')).ToArray();
 
