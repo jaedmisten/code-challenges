@@ -62,34 +62,24 @@ namespace BloodTypes
             switch (bloodType)
             {
                 case "\"O-\"":
-                    compatibleBloodTypes = oNegCompatible;
-                    break;
+                    return oNegCompatible;
                 case "\"O+\"":
-                    compatibleBloodTypes = oPosCompatible;
-                    break;
+                    return oPosCompatible;
                 case "\"A-\"":
-                    compatibleBloodTypes = aNegCompatible;
-                    break;
+                    return aNegCompatible;
                 case "\"A+\"":
-                    compatibleBloodTypes = aPosCompatible;
-                    break;
+                    return aPosCompatible;
                 case "\"B-\"":
-                    compatibleBloodTypes = bNegCompatible;
-                    break;
+                    return bNegCompatible;
                 case "\"B+\"":
-                    compatibleBloodTypes = bPosCompatible;
-                    break;
+                    return bPosCompatible;
                 case "\"AB-\"":
-                    compatibleBloodTypes = abNegCompatible;
-                    break;
+                    return abNegCompatible;
                 case "AB+":
-                    compatibleBloodTypes = abPosCompatible;
-                    break;
+                    return abPosCompatible;
                 default:
                     throw new Exception("There was an input error.");
             }
-
-            return compatibleBloodTypes;
         }
     }
 }
