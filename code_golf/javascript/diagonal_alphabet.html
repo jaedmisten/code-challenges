@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+ * 7/11/2020
+ *
+ * diagonal alphabet
+ *
+ * Generate each letter in the alphabet, with spaces before it equal to its position in the alphabet minus one.
+ *
+ * https://codegolf.stackexchange.com/questions/125117/diagonal-alphabet?noredirect=1&lq=1
+ *
+ * a
+ *  b
+ *   c
+ *    d
+ *     e
+ *      f
+ *       g
+ *        h
+ *         i
+ *          j
+ *           k
+ *            l
+ *             m
+ *              n
+ *               o
+ *                p
+ *                 q
+ *                  r
+ *                   s
+ *                    t
+ *                     u
+ *                      v
+ *                       w
+ *                        x
+ *                         y
+ *                          z
+ * 
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Diagonal Alphabet</title>
+</head>
+
+<body>
+
+    <div id="alphabet1"></div>
+    <br>
+    <div id="alphabet2"></div>
+    <br>
+    <div id="alphabet3"></div>
+
+<script>
+    // incrementing characters
+    var letter = 'a';
+    var diagAlpha3 = '';
+    for (let i = 0; i < 26; i++) {
+        for (let j = 0; j < i; j++) {
+            diagAlpha3 += '&nbsp;';
+        }
+        diagAlpha3 += String.fromCharCode(letter.charCodeAt(0) + i) + '<br>';
+    }
+    var el3 = document.getElementById('alphabet3');
+    el3.innerHTML = diagAlpha3;
+	
+	// Using a string of the alphabet.
+    var lettersStr = "abcdefghijklmnopqrstuvwxyz";
+    var diagAlpha1 = '';
+    for (let i = 0; i < lettersStr.length; i++) {
+        for (let j = 0; j < i; j++) {
+            diagAlpha1 += '&nbsp;';
+        }     
+        diagAlpha1 += lettersStr[i] + '<br>';
+    }
+    var el1 = document.getElementById('alphabet1');
+    el1.innerHTML = diagAlpha1;
+    
+
+    // Using an array of letters.
+    var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    var diagAlpha2 = '';
+    for (let i = 0; i < letters.length; i++) {
+        for (let j = 0; j < i; j++) {
+            diagAlpha2 += '&nbsp;';
+        }
+        diagAlpha2 += letters[i] + '<br>';
+    }
+    var el2 = document.getElementById('alphabet2');
+    el2.innerHTML = diagAlpha2;  
+</script>
+</body>
+</html>
