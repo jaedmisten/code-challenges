@@ -1,5 +1,5 @@
 ﻿/*
- * 9/7/2019
+ * 2/7/2021
  * 
  * Passwordify the string
  * 
@@ -16,7 +16,7 @@
 
 using System;
 
-namespace PasswordifyString
+namespace PasswordifyString2
 {
     class Program
     {
@@ -35,12 +35,11 @@ namespace PasswordifyString
 
         static string passwordify(string word)
         {
-            // Replace spaces with underscores.
             word = word.Replace(" ", "_");
 
-            // Create string of digits from input string in the order they appear from left to right.
             string digitStr = "";
             string charStr = "";
+            Random rand = new Random();
             for (int i = 0; i < word.Length; i++)
             {
                 if (Char.IsDigit(word[i]))
@@ -49,27 +48,11 @@ namespace PasswordifyString
                 }
                 else
                 {
-                    charStr += word[i];
+                    charStr += (rand.Next(0, 2) == 0) ? Char.ToUpper(word[i]) : Char.ToLower(word[i]);
                 }
             }
 
-            // Change each letter in input string to random upper or lower case.
-            string randCaseStr = "";
-            Random rand = new Random();
-            for (int i = 0; i < charStr.Length; i++)
-            {
-                int randBinary = rand.Next(0, 2);
-                if (randBinary == 0)
-                {
-                    randCaseStr += Char.ToUpper(charStr[i]);
-                }
-                else
-                {
-                    randCaseStr += Char.ToLower(charStr[i]);
-                }
-            }
-
-            return randCaseStr + digitStr;
+            return charStr + digitStr;
         }
     }
 }
