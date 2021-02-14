@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+ * 2/14/2021
+ * 
+ * Extract a string from a given string
+ * 
+ * code golf link:  https://codegolf.stackexchange.com/questions/50379/extract-a-string-from-a-given-string?rq=1
+ * 
+ * You are given a string and two characters. You have to print the string between 
+ * these characters from the string.
+ * Input will first contain a string (not empty or null). In the next line, there 
+ * will be two characters separated by a space.
+-->
+<head>
+	<meta charset="utf-8">
+	<title>Extract String From String</title>
+	<style>
+		#result {
+			font-size: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	Enter String: <input id="inputString" type="text" value=""><br>
+	Enter endpoints: <input id="endpoints" type="text" value=""><br>
+	<input type="submit" value="Submit" onclick="ExtractString()">
+	<br><br>
+	<div id="result"></div>
+
+<script>
+var resultEl = document.getElementById("result");
+resultEl.innerHTML = "";
+	
+function ExtractString() {
+	// get input string
+	var inputStrEl = document.getElementById("inputString");
+	var inputStr = inputStrEl.value;
+	if (inputStr.length > 100) {
+		return resultEl.innerHTML = "Error: Input string greater than 100 characters.";
+	}
+	
+	// get endpoints
+	var endpointsEl = document.getElementById("endpoints");
+	var endpoints = endpointsEl.value;
+	if (endpoints.length != 3 || endpoints[1] != ' ') {
+		return resultEl.innerHTML = "Error: Input endpoints in wrong format."
+	} else if (endpoints[0].charCodeAt() < 32 || endpoints[0].charCodeAt() > 126 || endpoints[2].charCodeAt() < 32 || endpoints[2].charCodeAt() > 126) {
+		return resultEl.innerHTML = "Error: Incorrect character(s) for endpoints. The endpoints characters can only have characters in the ASCII table range from space to tilde.";
+	}
+	if (endpoints[0] == endpoints[2]) {
+		return resultEl.innerHTML = '"null"';
+	}
+	var endpoint1 = endpoints[0];
+	var endpoint2 = endpoints[2];
+	
+	// Check input is in correct character range and endpoints only occur once in input string.
+	var endpoint1Counter = 0;
+	var endpoint2Counter = 0;
+	for (var i = 0; i < inputStr.length; i++) {
+		if (inputStr[i].charCodeAt() < 32 || inputStr[i].charCodeAt() > 126) {
+			return resultEl.innerHTML = "Error: Incorrect character(s) are in the input string. Input string can only have characters in the ASCII table range from space to tilde.";
+		}
+
+		if (inputStr[i] == endpoint1) {
+			endpoint1Counter++;
+		} else if (inputStr[i] == endpoint2) {
+			endpoint2Counter++;
+		}
+		
+		if (endpoint1Counter > 1 || endpoint2Counter > 1) {
+			return resultEl.innerHTML = '"null"'
+		}
+	}
+	
+	// Find extracted string and return result.
+	var position1 = inputStr.indexOf(endpoint1);
+	var position2 = inputStr.indexOf(endpoint2);
+	if (position1 == -1 || position2 == -1) {
+		return resultEl.innerHTML = '"null"';
+	}
+	if (position1 < position2) {
+		resultEl.innerHTML = '"' + inputStr.substring(position1 + 1, position2) + '"';
+	} else {
+		resultEl.innerHTML = '"' + inputStr.substring(position2 + 1, position1) + '"';
+	}
+}
+</script>
+</body>
+</html>
