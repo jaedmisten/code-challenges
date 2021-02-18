@@ -12,7 +12,7 @@
  */
 using System;
 
-namespace ExtractStringFromString2
+namespace ExtractStringFromString
 {
     class Program
     {
