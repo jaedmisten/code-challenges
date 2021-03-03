@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+ * 3/2/2021
+ *
+ * https://projectlovelace.net/problems/scientific-temperatures/
+ *
+ * Write a function that takes an input of Fahrenheit temperature 
+ * and converts it to Celsius.
+ * C = 5/9 (F - 32)
+-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Scientific Temperatures</title>
+	<style>
+	#celsiusTemp {
+		font-size: 25px;
+	}
+</style>
+</head>
+
+<body>
+
+Input Fahrenheit temperature: <input id="inputTemp" type="text" value="">
+<br>
+<input type="submit" value="submit" onclick="fahrenheitToCelsius()">
+<br><br>
+<div id="celsiusTemp"></div>
+
+<script>
+
+function fahrenheitToCelsius() {
+	var celsiusTempEl = document.getElementById("celsiusTemp");
+	celsiusTempEl.style.color = "black";
+	
+	var inputTempEl	= document.getElementById("inputTemp");
+	var fahrenheitTemp = inputTempEl.value;	
+	if (isNaN(fahrenheitTemp)) {
+		celsiusTempEl.style.color = "red";
+		return celsiusTempEl.innerHTML = "Error: Input must be a number."
+	}
+	
+	var celsiusTemp = 5/9 * (fahrenheitTemp - 32);
+	celsiusTempEl.innerHTML = "Output Celsius temperature: " + celsiusTemp.toFixed(1);
+}
+
+</script>
+</body>
+</html>
