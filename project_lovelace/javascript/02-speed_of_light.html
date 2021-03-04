@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+ * 3/3/2021
+ *
+ * https://projectlovelace.net/problems/speed-of-light/
+ *
+ * Write a function that takes input of distance in meters and
+ * calculates the time in speed of light it takes to travel that distance.
+ * 
+ * Light travels at constant speed c of 299,792,458 meters per second.
+ * The time t it takes to travel a distance d is t=d/c.
+ * 
+-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Speed Of Light</title>
+	<style>
+		#outputTime {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+Input distance: <input type="text" id="inputDistance" value="">
+<input type="submit" value="submit" onclick="getLightTime()">
+<br><br>
+<div id="outputTime"></div>
+
+
+
+<script>
+
+function getLightTime() {
+	const c = 299792458;  // speed of light in m/s
+	
+	var outputTimeEl = document.getElementById("outputTime");
+	outputTimeEl.style.color = "black";
+	
+	var inputDistanceEl = document.getElementById("inputDistance");
+	var distance = inputDistanceEl.value;
+	if (isNaN(distance) || distance < 0) {
+		outputTimeEl.style.color = "red";
+		return outputTimeEl.innerHTML = "Error: Input must be a number greater than 0."
+	}
+	
+	var time = distance/c;
+	outputTimeEl.innerHTML = "Output time: " + time.toFixed(6);
+} 
+
+</script>
+</body>
+</html>
