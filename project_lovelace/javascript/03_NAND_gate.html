@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>NAND Gate</title>
+	<style>
+		#outputQ {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+
+Input A: 
+<select id="inputA">
+	<option value="0">0</option>
+	<option value="1">1</option>
+</select>
+<br>
+Input B:
+<select id="inputB">
+	<option value="0">0</option>
+	<option value="1">1</option>
+</select>
+<br>
+<input type="submit" value="Submit" onclick="getNandGate()">
+<br><br>
+<div id="outputQ"></div>
+
+
+<script>
+
+function getNandGate() {
+	var outputQEl = document.getElementById("outputQ");
+	outputQEl.style.color = "black";
+	var inputAEl = document.getElementById("inputA");
+	var inputA = inputAEl.value;
+	var inputBEl = document.getElementById("inputB");
+	var inputB = inputBEl.value;	
+	
+	if ((inputA != 0 && inputA != 1) || (inputB != 0 && inputB != 1)) {
+		outputQEl.style.color = "red";
+		return outputQEl.innerHTML = "Error: Input A and Input B must be 0 or 1.";
+	}	
+
+	outputQ.innerHTML = (inputA == "1" && inputB == "1") ? "0" : "1";
+}
+
+</script>
+</body>
+</html>
