@@ -1,0 +1,48 @@
+<!DOCTYPE hmtl>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Plump Moose</title>
+	<style>
+		#bodyMass {
+			font-size: 30px;
+		}
+	</style>
+</head>
+
+<body>
+
+Input latitude: <input type="text" id="inputLatitude" name="latitude" value=""/>
+<input type="submit" name="Submit" value="submit" onclick="getBodyMass()">
+<br><br>
+<div id="bodyMass"></div>
+
+<script>
+function getBodyMass() {
+	var a = 2.757;
+	var b = 16.793;
+	var bodyMassEl = document.getElementById("bodyMass");
+	bodyMassEl.style.color = "black";
+	var inputLatitudeEL = document.getElementById("inputLatitude");
+	var latitude = inputLatitudeEL.value;
+	
+	if (isNaN(latitude)) {
+		bodyMassEl.style.color = "red";
+		bodyMassEl.innerHTML = "Incorrect input. Latitude must be a number between 0 and 90.";
+		return;
+	}
+	
+	if (latitude < 0 || latitude > 90) {
+		bodyMassEl.style.color = "red";
+		bodyMassEl.innerHTML = "Incorrect input. Latitude must be a number between 0 and 90.";
+		return;
+	}
+	
+	var bodyMassEl = document.getElementById("bodyMass");
+	var mass = a * latitude + b;
+	bodyMassEl.innerHTML = mass.toFixed(4);
+}
+
+</script>
+</body>
+</html>
