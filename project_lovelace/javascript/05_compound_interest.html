@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+ * 5/22/2021
+ *
+ * https://projectlovelace.net/problems/compound-interest/
+ *
+ * Calculate the total amount of money after a certain amount of years if 
+ * interest is compounded yearly.
+ *
+ * m = amount of money
+ * r = interest rate (between 0 and 1)
+ * n = number of years
+ * M = total amount of money
+ * M = m(1 + r)^n
+ * 
+-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Compound Interest</title>
+	<style>
+		#errorMsg {
+			color: red;
+			font-size: 25px;
+			font-weight: bold;
+			visibility: hidden;
+		}
+		#finalAmount {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+
+Amount: <input type="number" id="amount" name="amount"><br>
+Interest Rate: <input type="number" id="rate" name="rate"><br>
+Years: <input type="number" id="years" name="years"><br>
+<input type="submit" name="submit" value="Submit" onclick="submitForm()">
+<br><br>
+<div id="finalAmount"></div>
+<div id="errorMsg">Incorrect input. All input must be a number.</div>
+
+
+<script>
+function submitForm() {
+	var finalAmountEl = document.getElementById('finalAmount');
+	var errorMsgEl = document.getElementById('errorMsg');
+	errorMsgEl.style.visibility = 'hidden';
+	
+	var amountEl = document.getElementById('amount');
+	var amount = parseInt(amountEl.value);
+	
+	var rateEl = document.getElementById('rate');
+	var rate = parseFloat(rateEl.value);
+	
+	var yearsEl = document.getElementById('years');
+	var years = parseInt(yearsEl.value);
+	
+	if (isNaN(amount) || isNaN(rate) || isNaN(years)) {
+		var errorMsgEl = document.getElementById('errorMsg');
+		errorMsgEl.style.visibility = 'visible';
+		finalAmountEl.innerHTML = "";
+		return;
+	}
+	
+	var finalAmount = amount * Math.pow(1 + rate, years);
+	finalAmountEl.innerHTML = 'Final Amount: ' + finalAmount.toFixed(2);
+}
+</script>
+</body>
+</html>
