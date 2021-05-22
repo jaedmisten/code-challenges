@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
 
-	<form action="passwordify_string3.php" method="post">
+	<form action="passwordify_string.php" method="post">
 		<input type="text" id="inputPassword" name="inputPassword" value="<?php if (isset($_POST['inputPassword'])) echo $_POST['inputPassword'] ?>">
 		<input type="submit" value="submit">
 	</form>
