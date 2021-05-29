@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Wind Chill</title>
+	<style>
+		#errorMsg {
+			color: red;
+			font-size: 25px;
+			font-weight: bold;
+			visibility: hidden;
+		}
+		#windChillIndex {
+			color: blue;
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+Input temperature: <input type="number" id="temp" name="temp"><br>
+Input wind speed: <input type="number" id="windSpeed" name="windSpeed"><br>
+<input type="submit" id="submit" name="submit">
+<br><br>
+<div id="windChillIndex"></div>
+<div id="errorMsg">Incorrect input. All input must be a number. Input wind speed must be greater than 0.</div>
+
+<script>
+var submitEl = document.getElementById("submit");
+submitEl.addEventListener("click", getWindChill);
+
+var errorMsgEl = document.getElementById("errorMsg");
+var windChillIndexEl = document.getElementById("windChillIndex");
+
+function getWindChill() {
+	errorMsgEl.style.visibility = "hidden";
+	
+	var tempEl = document.getElementById("temp");
+	var temp = tempEl.value;
+	var windSpeedEl = document.getElementById("windSpeed");
+	var windSpeed = windSpeedEl.value;
+	
+	if (isNaN(temp) || isNaN(windSpeed) || windSpeed < 0) {
+		errorMsgEl.style.visibility = "visible";
+		windChillIndexEl.innerHTML = "";
+		return;
+	}
+	
+	var windChillIndex = 13.12 + 0.6215 * temp - 11.37 * Math.pow(windSpeed, 0.16) + 0.3965 * temp * Math.pow(windSpeed, 0.16);
+	windChillIndexEl.innerHTML = "Output wind chill index: " + windChillIndex.toFixed(2);
+}
+</script>
+</body>
+</html>
