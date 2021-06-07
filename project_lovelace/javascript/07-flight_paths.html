@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- 6/7/2021
+* 
+* https://projectlovelace.net/problems/flight-paths/
+* 
+* Write a program that takes two input points of latitude and longitude and calcualates the 
+* distance between the points in kilometers using the haversine formula.
+-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flight Paths</title>
+	<style>
+		#output {
+			font-size: 25px;
+			color: blue;
+		}
+		#errorMsg {
+			font-size: 25px;
+			color: red;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+Input point 1 (latitude, longitude): <input type="text" id="point1" value=""><br>
+Input point 2 (latitude, longitude): <input type="text" id="point2" value=""><br>
+<input type="submit" id="submit" value="submit">
+<br><br>
+<div id="output"></div>
+<div id="errorMsg"></div>
+
+<script>
+var submitEl = document.getElementById("submit");
+submitEl.addEventListener("click", getDistance);
+
+function getDistance() {
+	const errorMsg = "Incorrect input. Input must be two numbers separated by a comma. Latitude must be between -90 to 90. Longitude must be between -180 to 180."
+	var outputEl = document.getElementById("output");
+	outputEl.innerHTML = "";
+	var errorMsgEl = document.getElementById("errorMsg");
+	errorMsgEl.innerHTML = "";
+	
+	var point1El = document.getElementById("point1");
+	var point1 = point1El.value;
+	var point1LatLong = point1.split(',');
+	if (point1LatLong.length == 2) {
+		var point1Lat = point1LatLong[0].trim();
+		var point1Long = point1LatLong[1].trim();
+	} else {
+		errorMsgEl.innerHTML = errorMsg;
+		return;
+	}
+	
+	var point2El = document.getElementById("point2");
+	var point2 = point2El.value;
+	var point2LatLong = point2.split(',');
+	if (point2LatLong.length == 2) {
+		var point2Lat = point2LatLong[0].trim();
+		var point2Long = point2LatLong[1].trim();
+	} else {
+		errorMsgEl.innerHTML = errorMsg;
+		return;
+	}
+
+	// verify input
+	if (isNaN(point1Lat) || point1Lat < -90 || point1Lat > 90 || isNaN(point1Long) || point1Long < -180 || point1Long > 180 || isNaN(point2Lat) || point2Lat < -90 || point2Lat > 90 || isNaN(point2Long) || point2Long < -180 || point2Long > 180) {
+		errorMsgEl.innerHTML = errorMsg;
+		return;
+	}
+	
+	const pi = 3.14159265395;
+	var point1LatRad = point1Lat * pi / 180;
+	var point1LongRad = point1Long * pi / 180;
+	var point2LatRad = point2Lat * pi / 180;
+	var point2LongRad = point2Long * pi / 180;
+	
+	const r = 6372.1  // radius of Earth in km
+	var distance = 2 * r * Math.asin(Math.sqrt(Math.pow(Math.sin((point2LatRad - point1LatRad)/2), 2) + Math.cos(point1LatRad) * Math.cos(point2LatRad) * Math.pow(Math.sin((point2LongRad - point1LongRad)/2), 2)));
+	outputEl.innerHTML = "Output distance: " + distance.toFixed(3);
+}
+</script>
+</body>
+</html>
