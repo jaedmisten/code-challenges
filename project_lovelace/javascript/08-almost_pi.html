@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+ * 6/10/21
+ * https://projectlovelace.net/problems/almost-pi/
+ * 
+ * Calculate the approximation of pi using the below formula.
+ * input: n terms
+ * 4 * ∑((-1^k)/(2k+1)) from k=0 to k=n
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Almost Pi</title>
+    <style>
+        #output {
+            color: blue;
+            font-size: 25px;
+        }
+        #errorMsg {
+            color: red;
+            font-size:25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+Input: <input type="number" id="input" value="input"><br>
+<input type="submit" id="submit" value="submit"><br><br>
+<div id="output"></div>
+<div id="errorMsg"></div>
+
+<script>
+var submitEl = document.getElementById("submit");
+submitEl.addEventListener("click", almostPi);
+
+function almostPi() {
+    var outputEl = document.getElementById("output");
+    outputEl.innerHTML = "";
+    var errorMsgEl = document.getElementById("errorMsg");
+    errorMsgEl.innerHTML = "";
+    var inputEl = document.getElementById("input");
+    var n = inputEl.value;
+
+    if (isNaN(n) || n <= 0) {
+        errorMsgEl.innerHTML = "Incorrect input. Input must be a number greater than 0.";
+        return;
+    }
+
+    var pi = 0;
+    for (let k = 0; k < n; k++) {
+        pi += Math.pow(-1, k) / (2 * k + 1);
+    } 
+    pi *= 4;
+    outputEl.innerHTML = pi;
+}
+</script>
+</body>
+</html>
