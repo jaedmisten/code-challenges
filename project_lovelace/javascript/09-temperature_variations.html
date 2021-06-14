@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+ * 6/14/2021
+ * https://projectlovelace.net/problems/temperature-variations/
+ *
+ * Write a program that takes a list of input temperatures and calculates and 
+ * outputs the mean and standard deviation.
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Temperature Variations</title>
+    <style>
+        #output {
+            color: blue;
+            font-size: 25px;
+        }
+        #errorMsg {
+            color: red;
+            font-size: 25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+Input temperatures: <input type="text" id="temps" value=""><br>
+<input type="submit" id="submit" value="submit">
+<br><br>
+<div id="output"></div>
+<div id="errorMsg"></div>
+
+<script>
+var submitEl = document.getElementById("submit");
+submitEl.addEventListener('click', getStats)
+
+function getStats() {
+    var outputEl = document.getElementById("output");
+    outputEl.innerHTML = "";
+    var errorMsgEl = document.getElementById("errorMsg");
+    errorMsgEl.innerHTML = "";
+    var errorMsg = "Incorrect input. Input needs to start with '[' and end with ']' and have only numbers separated by commas in the brackets. e.g. [70, 80, 90]";
+    var inputEl = document.getElementById("temps");
+    var input = inputEl.value;
+
+    if (input[0] != '[' || input[input.length - 1] != ']') {
+        errorMsgEl.innerHTML = errorMsg;
+        return;
+    }
+
+    // Remove opening and closing brackets. 
+    input = input.slice(1, input.length - 1);
+
+    var temps = input.split(",").map(function (value) {
+        return value.trim();
+    });
+
+    // get the average (mean)
+    var total = 0;
+    for (var i = 0; i < temps.length; i++) {
+        if (isNaN(temps[i])) {
+            errorMsgEl.innerHTML = errorMsg;
+            return;
+        }
+        total += parseFloat(temps[i]);
+    }
+    var avg = total / temps.length;
+
+    // get the standard deviation
+    var deviationsTotal = 0;
+    for (var i = 0; i < temps.length; i++) {
+        deviationsTotal += Math.pow(parseFloat(temps[i]) - avg, 2);
+    }
+    var standardDeviation = Math.sqrt(deviationsTotal/temps.length);
+
+    output.innerHTML = "Output mean: " + avg.toFixed(3) + "<br>Output standard deviation: " + standardDeviation.toFixed(3);
+}
+</script>
+</body>
+</html>
