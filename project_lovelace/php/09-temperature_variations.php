@@ -1,4 +1,11 @@
 <?php
+/*
+ * 6/15/2021
+ * https://projectlovelace.net/problems/temperature-variations/
+ *
+ * Write a program that takes a list of input temperatures and calculates and 
+ * outputs the mean and standard deviation.
+ */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $error = false;
     $input = trim($_POST["input"]);
