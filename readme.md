@@ -1,1 +1,1 @@
-A repository for programming challenges and katas.
+A repository for programming challenges and puzzles.
