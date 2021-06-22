@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Even Fibonacci Sum</title>
+</head>
+
+<body>
+
+<script>
+var f = [0, 1];
+var sum = 0;
+var i = 2;
+do {
+    f[i] = f[i-2] + f[i-1];
+
+    if (f[i] >= 4000000) break;
+
+    if (f[i] % 2 == 0) {
+        sum += f[i];
+    }
+
+    i++
+} while(true);
+
+console.log("Sum: ", sum);
+</script>
+</body>
+</html>
