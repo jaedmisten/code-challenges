@@ -1,0 +1,108 @@
+<!DOCTYPE hmtl>
+<!--
+ * 6/24/2021
+ * https://projectlovelace.net/problems/blood-types/
+ *
+ * Given a patient's blood type and a list of available blood types figure out if the patient will survive.
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Blood Types</title>
+</head>
+<body>
+Select Blood Type: 
+<select id="bloodType">
+    <option value="O-">O-</option>
+    <option value="O+">O+</option>
+    <option value="A-">A-</option>
+    <option value="A+">A+</option>
+    <option value="B-">B-</option>
+    <option value="B+">B+</option>
+    <option value="AB-">AB-</option>
+    <option value="AB+">AB+</option>
+</select>
+<br>
+Check List Of Available Blood Types: 
+<input type="checkbox" name="availableType" value="O-">O-
+<input type="checkbox" name="availableType" value="O+">O+
+<input type="checkbox" name="availableType" value="A-">A-
+<input type="checkbox" name="availableType" value="A+">A+
+<input type="checkbox" name="availableType" value="A-">A-
+<input type="checkbox" name="availableType" value="B+">B+
+<input type="checkbox" name="availableType" value="B-">B-
+<input type="checkbox" name="availableType" value="AB+">AB+
+<input type="checkbox" name="availableType" value="AB-">AB-
+<br>
+<input type="submit" id="submit" name="submit" value="submit">
+<br><br>
+<div id="output"></div>
+
+<script>
+var submitEl = document.getElementById("submit");
+submitEl.addEventListener('click', getOutput);
+
+function getOutput() {
+    var bloodTypeEl = document.getElementById("bloodType");
+    var bloodType = bloodTypeEl.value;
+    
+    var checkedAvailableTypes = document.querySelectorAll('input[name="availableType"]:checked');
+    var availableTypes = [];
+    for (var i = 0; i < checkedAvailableTypes.length; i++) {
+        availableTypes.push(checkedAvailableTypes[i].value);
+    }
+
+    const oNegCompat = ['O-'];
+    const oPosCompat = ['O-', 'O+'];
+    const aNegCompat = ['O-', 'A-'];
+    const aPosCompat = ['O-', 'O+', 'A-', 'A+'];
+    const bNegCompat = ['O-', 'B-'];
+    const bPosCompat = ['O-', 'O+', 'B-', 'B+'];
+    const abNegCompat = ['O-', 'B-', 'A-', 'AB-'];
+    const abPosCompat = ['O-', 'O+', 'B-', 'B+', 'A-', 'A+', 'AB-', 'AB+'];
+
+    switch (bloodType) {
+        case 'O-': 
+            compatTypes = oNegCompat;
+            break;
+        case 'O+':
+            compatTypes = oPosCompat;
+            break;
+        case 'A-':
+            compatTypes = aNegCompat;
+            break;
+        case 'A+':
+            compatTypes = aPosCompat;
+            break;
+        case 'B-':
+            compatTypes = bNegCompat;
+            break;
+        case 'B+':
+            compatTypes = bPosCompat;
+            break;
+        case 'AB-':
+            compatTypes = abNegCompat;
+            break;
+        case 'AB+':
+            compatTypes = abPosCompat;
+            break;
+    }
+
+    var survive = false;
+    checkSurvive:
+    for (var i = 0; i < availableTypes.length; i++) {
+        for (var j = 0; j < compatTypes.length; j++) {
+            if (availableTypes[i] === compatTypes[j]) {
+                survive = true;
+                break checkSurvive;
+            }
+        }
+    }
+
+    var outputEl = document.getElementById('output');
+    outputEl.innerHTML = "Output Survivability: " + survive;
+
+}
+</script>    
+</body>
+</html>
