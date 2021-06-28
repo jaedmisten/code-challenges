@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+ * 6/28/21
+ * https://projectlovelace.net/problems/temperature-variations/
+ *
+ * Write a program that takes a list of input temperatures and calculates and 
+ * outputs the mean and standard deviation.
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Definite Integrals</title>
+    <style>
+        #output {
+            color: blue;
+            font-size: 20px;
+        }
+        #errorMsg {
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+Input list of rectangles heights: <input type="text" id="heights" value=""><br>
+Input rectangle width: <input type="number" id="width" value=""><br>
+<input type="submit" id="submit" value="submit">
+<br><br>
+<div id="output"></div>
+<div id="errorMsg"></div>
+<script>
+let submitEl = document.getElementById('submit');
+submitEl.addEventListener('click', getArea);
+
+function getArea() {
+    let outputEl = document.getElementById('output');
+    outputEl.innerHTML = '';
+    let errorMsgEl = document.getElementById('errorMsg');
+    errorMsgEl.innerHTML = '';
+    
+    let heightsEl = document.getElementById('heights');
+    let heightsStr = heightsEl.value;
+
+    let widthEl = document.getElementById('width');
+    if (isNaN(widthEl.value)) {
+        errorMsgEl.innerHTML = "Error: Rectangle width must be a number.";
+        return;
+    }
+    let width = parseFloat(widthEl.value);
+
+    if (heightsStr[0] === '[' && heightsStr[heightsStr.length-1] === ']') {
+        heightsStr = heightsStr.substring(1, heightsStr.length-1);
+    } else {
+        errorMsgEl.innerHTML = "Error: Heights input should start with [ and end with ].";
+        return;
+    }
+
+    heights = heightsStr.split(',').map(function (value) {
+        return value.trim();
+    });
+
+    let area = 0;
+    for(let i = 0; i < heights.length; i++) {
+        if(isNaN(heights[i])) {
+            errorMsgEl.innerHTML = "Error: Heights input needs to be numbers separated by commas.";
+            return;
+        }
+        area += heights[i] * width;
+    }
+    outputEl.innerHTML = area;
+}
+</script>
+</body>
+</html>
