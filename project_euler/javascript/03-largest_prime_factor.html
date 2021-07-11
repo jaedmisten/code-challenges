@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+ * 7/5/2021
+ * Project Euler #3 Largest Prime Factor: https://projecteuler.net/problem=4
+ *
+ * The prime factors of 13195 are 5, 7, 13 and 29.
+ * What is the largest prime factor of the number 600851475143 ?
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Largest Prime Factor</title>
+</head>
+<body>
+
+<script>
+let dividend = 600851475143;
+let primeFactors = [];
+let i = 2;
+while (i <= dividend) {
+    if (dividend % i == 0) {
+        dividend = dividend / i;
+        primeFactors.push(i);
+        i = 2;
+    } else {
+        i++;
+    }
+}
+console.log(primeFactors[primeFactors.length - 1]);
+</script>
+</body>
+</html>
