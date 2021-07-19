@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+ * 7/19/2021
+ * https://projectlovelace.net/problems/rocket-science/
+ * 
+ * Calculate the mass of fuel needed by a rocket to escape Saturn.
+ * 
+ * m fuel = M(e^(v/ve) - 1))
+ * M: Mass of the rocket with no fuel.
+ * e: Euler's number 2.71828
+ * v: Velocity the rocket needs to escape the planet.
+ * ve: Exhaust velocity of the rocket.
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rocket Science</title>
+    <style>
+        #outputVelocity {
+            font-size: 20px;
+            font-weight: bold;
+            color: blue;
+        }
+        #errorMsg {
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+Input Velocity: <input type="number" id="inputVelocity" value=""><br>
+<input type="submit" id="submit" value="submit"><br><br>
+<div id="outputVelocity"></div>
+<div id="errorMsg"></div>
+
+<script>
+let submitEl = document.getElementById('submit');
+submitEl.addEventListener('click', getMass);
+
+function getMass() {
+    let outputVelocityEl = document.getElementById('outputVelocity');
+    outputVelocityEl.innerHTML = "";
+
+    let errorMsgEl = document.getElementById('errorMsg');
+    errorMsgEl.innerHTML = "";
+
+    let inputVelocityEl = document.getElementById('inputVelocity');
+    let velocity = inputVelocityEl.value;
+    if (isNaN(velocity) || velocity < 0 || velocity === "") {
+        errorMsgEl.innerHTML = "Incorrect Input: Input velocity must be a number and can not be negative.";
+        return;
+    }
+
+    let rocketMass = 250000;
+    let exhaustVelocity = 2550;
+    let fuelMass = rocketMass * (Math.pow(Math.E, velocity/exhaustVelocity) - 1);
+    outputVelocityEl.innerHTML = fuelMass.toFixed(2);
+}
+</script>
+</body>
+</html>
