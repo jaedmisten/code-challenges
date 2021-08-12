@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+ * 8/12/21
+ * Project Euler: Sum Square difference
+ * https://projecteuler.net/problem=6
+ * 
+ * The sum of the squares of the first ten natural numbers is 385.
+ * The square of the sum of the first ten natural numbers is 3025.
+ * Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025 - 385 = 2640.
+ * Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sum Square Difference</title>
+</head>
+
+<body>
+
+<script>
+let sumOfSquares = 0;
+for (let i = 1; i <= 100; i++) {
+    sumOfSquares += Math.pow(i, 2);
+}
+
+let sum = 0;
+for (let i = 1; i <= 100; i++) {
+    sum += i;
+}
+let squareOfSum = Math.pow(sum, 2);
+
+let sumSquareDifference = squareOfSum - sumOfSquares;
+console.log('sumSquareDifference: ', sumSquareDifference);
+</script>
+</body>
+</html>
