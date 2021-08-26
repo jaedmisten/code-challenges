@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+ * 8/26/21
+ * https://projectlovelace.net/problems/habitable-exoplanets/
+ *
+ * Given a star's absolute luminosity  and the planet's distance from the star  as inputs, 
+ * return "too hot" if the planet is too close to the star, "too cold" if it's too far away 
+ * from the star, and "just right" if it's in the circumstellar habitable zone (CHZ).
+ *
+ * CHZ is between the following  inner radius and outer radius:
+ * r1 = Sqrt(L/1.1) r2 = Sqrt(L/0.54) 
+ * L = star's luminosity
+-->
+<html>
+    <meta charset="UTF-8">
+    <title>Habitable Exoplanets</title>
+    <style>
+        #output {
+            font-size: 18px;
+        }
+        #errorMsg {
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</html>
+<body>
+    <form>
+        Input absolute luminosity: <input type="number" id="luminosity" name="luminosity" value=""><br>
+        Input exoplanet distance: <input type="number" id="distance" name="distance" value=""><br>
+        <input type="submit" id="submit" value="submit">
+    </form>
+    <br>
+    <div id="output"></div>
+    <div id="errorMsg"></div>
+
+<script type="text/javascript">
+let submitEl = document.getElementById('submit');
+submitEl.addEventListener('click', getHabitability);
+
+function getHabitability(e) {
+    e.preventDefault();
+
+    let outputEl = document.getElementById('output');
+    outputEl.innerHTML = "";
+    let errorMsgEl = document.getElementById('errorMsg');
+    errorMsgEl.innerHTML = "";
+
+    let luminosityEl = document.getElementById('luminosity');
+    luminosity = luminosityEl.value;
+    let distanceEl = document.getElementById('distance');
+    distance = distanceEl.value;
+
+    if (isNaN(luminosity) || luminosity < 0 || isNaN(distance) || distance < 0) {
+        errorMsgEl.innerHTML = "Incorrect input. All input must be a number and must be greater than 0.";
+        return;
+    }
+
+    let innerRadius = Math.sqrt(luminosity/1.1);
+    let outerRadius = Math.sqrt(luminosity/.54);
+
+    let habitability = "";
+    if (distance < innerRadius) {
+        console.log('too hot');
+        habitability = 'too hot';
+    } else if (distance > innerRadius && distance < outerRadius) {
+        console.log('just right');
+        habitability = 'just right';
+    } else if (distance > outerRadius) {
+        console.log('too cold');
+        habitability = 'too cold';
+    }
+
+    outputEl = document.getElementById('output');
+    outputEl.innerHTML = 'Output habitability: "' + habitability + '"';
+}
+</script>
+</body>
+</html>
