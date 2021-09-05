@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 <form action="13-rocket_science.php" method="post">
-    Velocity: <input type="text" name="velocity" value="<?php echo $_POST["velocity"] ?>"><br>
+    Velocity: <input type="number" name="velocity" value="<?php if (isset($_POST["velocity"])) echo $_POST["velocity"]; ?>"><br>
     <input type="submit" name="submit">
 </form>
 <br>
