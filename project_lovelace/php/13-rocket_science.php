@@ -1,6 +1,6 @@
 <?php
 /*
-* 7/19/2021
+ * 7/19/2021
  * https://projectlovelace.net/problems/rocket-science/
  * 
  * Calculate the mass of fuel needed by a rocket to escape Saturn.

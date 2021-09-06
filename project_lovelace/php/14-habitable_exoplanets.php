@@ -1,4 +1,16 @@
 <?php
+/*
+ * 9/5/21
+ * https://projectlovelace.net/problems/habitable-exoplanets/
+ *
+ * Given a star's absolute luminosity  and the planet's distance from the star  as inputs, 
+ * return "too hot" if the planet is too close to the star, "too cold" if it's too far away 
+ * from the star, and "just right" if it's in the circumstellar habitable zone (CHZ).
+ *
+ * CHZ is between the following  inner radius and outer radius:
+ * r1 = Sqrt(L/1.1) r2 = Sqrt(L/0.54) 
+ * L = star's luminosity
+ */
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!empty($_POST['luminosity']) && ($_POST['luminosity'] != '') && isset($_POST['luminosity']) && is_numeric($_POST['luminosity']) && ($_POST['luminosity'] > 0)) {
         $luminosity = $_POST['luminosity'];
