@@ -1,4 +1,18 @@
 <?php
+/* 6/7/2021
+ * 
+ * https://projectlovelace.net/problems/flight-paths/
+ * 
+ * Write a program that takes two input points of latitude and longitude and calcualates the 
+ * distance between the points in kilometers using the haversine formula.
+ *
+ *  Haversine formula:
+ *      a = sin²(Δφ/2) + cos φ1 ⋅ cos φ2 ⋅ sin²(Δλ/2)
+ *      c = 2 ⋅ atan2( √a, √(1−a) )
+ *      d = R ⋅ c
+ *      where φ is latitude, λ is longitude, R is earth’s radius (mean radius = 6,371km);
+ *      note that angles need to be in radians to pass to trig functions. 
+ */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $error = false;
     $point1 = $_POST["point1"];

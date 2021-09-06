@@ -27,12 +27,14 @@
 </head>
 
 <body>
-Input temperature: <input type="number" step=".1" id="temp" name="temp"><br>
-Input wind speed: <input type="number" step=".1" id="windSpeed" name="windSpeed"><br>
-<input type="submit" id="submit" name="submit">
-<br><br>
-<div id="windChillIndex"></div>
-<div id="errorMsg">Incorrect input. All input must be a number. Input wind speed must be greater than 0.</div>
+	<form>
+		Input temperature: <input type="number" id="temp" name="temp"><br>
+		Input wind speed: <input type="number" id="windSpeed" name="windSpeed"><br>
+		<input type="submit" id="submit" name="submit">
+	</form>
+	<br>
+	<div id="windChillIndex"></div>
+	<div id="errorMsg">Incorrect input. All input must be a number. Input wind speed must be greater than 0.</div>
 
 <script>
 var submitEl = document.getElementById("submit");
@@ -41,7 +43,8 @@ submitEl.addEventListener("click", getWindChill);
 var errorMsgEl = document.getElementById("errorMsg");
 var windChillIndexEl = document.getElementById("windChillIndex");
 
-function getWindChill() {
+function getWindChill(e) {
+	e.preventDefault();
 	errorMsgEl.style.visibility = "hidden";
 	
 	var tempEl = document.getElementById("temp");

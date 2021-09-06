@@ -23,17 +23,21 @@
     </style>
 </head>
 <body>
-Input list of rectangles heights: <input type="text" id="heights" value=""><br>
-Input rectangle width: <input type="number" id="width" value=""><br>
-<input type="submit" id="submit" value="submit">
-<br><br>
-<div id="output"></div>
-<div id="errorMsg"></div>
+    <form>
+        Input list of rectangles heights: <input type="text" id="heights" value=""><br>
+        Input rectangle width: <input type="number" id="width" value=""><br>
+        <input type="submit" id="submit" value="submit">
+    </form>
+    <br>
+    <div id="output"></div>
+    <div id="errorMsg"></div>
 <script>
 let submitEl = document.getElementById('submit');
 submitEl.addEventListener('click', getArea);
 
-function getArea() {
+function getArea(e) {
+    e.preventDefault();
+
     let outputEl = document.getElementById('output');
     outputEl.innerHTML = '';
     let errorMsgEl = document.getElementById('errorMsg');

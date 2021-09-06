@@ -5,6 +5,13 @@
 * 
 * Write a program that takes two input points of latitude and longitude and calcualates the 
 * distance between the points in kilometers using the haversine formula.
+*
+*  Haversine formula:
+*      a = sin²(Δφ/2) + cos φ1 ⋅ cos φ2 ⋅ sin²(Δλ/2)
+*      c = 2 ⋅ atan2( √a, √(1−a) )
+*      d = R ⋅ c
+*      where φ is latitude, λ is longitude, R is earth’s radius (mean radius = 6,371km);
+*      note that angles need to be in radians to pass to trig functions. 
 -->
 <html>
 <head>
@@ -24,10 +31,12 @@
 </head>
 
 <body>
-Input point 1 (latitude, longitude): <input type="text" id="point1" value=""><br>
-Input point 2 (latitude, longitude): <input type="text" id="point2" value=""><br>
-<input type="submit" id="submit" value="submit">
-<br><br>
+<form>
+	Input point 1 (latitude, longitude): <input type="text" id="point1" value=""><br>
+	Input point 2 (latitude, longitude): <input type="text" id="point2" value=""><br>
+	<input type="submit" id="submit" value="submit">
+</form>
+<br>
 <div id="output"></div>
 <div id="errorMsg"></div>
 
@@ -35,7 +44,8 @@ Input point 2 (latitude, longitude): <input type="text" id="point2" value=""><br
 var submitEl = document.getElementById("submit");
 submitEl.addEventListener("click", getDistance);
 
-function getDistance() {
+function getDistance(e) {
+	e.preventDefault();
 	const errorMsg = "Incorrect input. Input must be two numbers separated by a comma. Latitude must be between -90 to 90. Longitude must be between -180 to 180."
 	var outputEl = document.getElementById("output");
 	outputEl.innerHTML = "";

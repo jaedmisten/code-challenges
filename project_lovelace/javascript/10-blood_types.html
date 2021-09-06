@@ -11,38 +11,41 @@
     <title>Blood Types</title>
 </head>
 <body>
-Select Blood Type: 
-<select id="bloodType">
-    <option value="O-">O-</option>
-    <option value="O+">O+</option>
-    <option value="A-">A-</option>
-    <option value="A+">A+</option>
-    <option value="B-">B-</option>
-    <option value="B+">B+</option>
-    <option value="AB-">AB-</option>
-    <option value="AB+">AB+</option>
-</select>
-<br>
-Check List Of Available Blood Types: 
-<input type="checkbox" name="availableType" value="O-">O-
-<input type="checkbox" name="availableType" value="O+">O+
-<input type="checkbox" name="availableType" value="A-">A-
-<input type="checkbox" name="availableType" value="A+">A+
-<input type="checkbox" name="availableType" value="A-">A-
-<input type="checkbox" name="availableType" value="B+">B+
-<input type="checkbox" name="availableType" value="B-">B-
-<input type="checkbox" name="availableType" value="AB+">AB+
-<input type="checkbox" name="availableType" value="AB-">AB-
-<br>
-<input type="submit" id="submit" name="submit" value="submit">
-<br><br>
-<div id="output"></div>
+    <form>
+        Select Blood Type: 
+        <select id="bloodType">
+            <option value="O-">O-</option>
+            <option value="O+">O+</option>
+            <option value="A-">A-</option>
+            <option value="A+">A+</option>
+            <option value="B-">B-</option>
+            <option value="B+">B+</option>
+            <option value="AB-">AB-</option>
+            <option value="AB+">AB+</option>
+        </select>
+        <br>
+        Check List Of Available Blood Types: 
+        <input type="checkbox" name="availableType" value="O-">O-
+        <input type="checkbox" name="availableType" value="O+">O+
+        <input type="checkbox" name="availableType" value="A-">A-
+        <input type="checkbox" name="availableType" value="A+">A+
+        <input type="checkbox" name="availableType" value="A-">A-
+        <input type="checkbox" name="availableType" value="B+">B+
+        <input type="checkbox" name="availableType" value="B-">B-
+        <input type="checkbox" name="availableType" value="AB+">AB+
+        <input type="checkbox" name="availableType" value="AB-">AB-
+        <br>
+        <input type="submit" id="submit" name="submit" value="submit">
+    </form>
+    <br>
+    <div id="output"></div>
 
 <script>
 var submitEl = document.getElementById("submit");
 submitEl.addEventListener('click', getOutput);
 
-function getOutput() {
+function getOutput(e) {
+    e.preventDefault();
     var bloodTypeEl = document.getElementById("bloodType");
     var bloodType = bloodTypeEl.value;
     

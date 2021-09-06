@@ -24,17 +24,20 @@
 </head>
 
 <body>
-Input temperatures: <input type="text" id="temps" value=""><br>
-<input type="submit" id="submit" value="submit">
-<br><br>
-<div id="output"></div>
-<div id="errorMsg"></div>
+    <form>
+        Input temperatures: <input type="text" id="temps" value=""><br>
+        <input type="submit" id="submit" value="submit">
+    </form>
+    <br><br>
+    <div id="output"></div>
+    <div id="errorMsg"></div>
 
 <script>
 var submitEl = document.getElementById("submit");
 submitEl.addEventListener('click', getStats)
 
-function getStats() {
+function getStats(e) {
+    e.preventDefault();
     var outputEl = document.getElementById("output");
     outputEl.innerHTML = "";
     var errorMsgEl = document.getElementById("errorMsg");

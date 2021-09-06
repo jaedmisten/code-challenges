@@ -25,8 +25,10 @@
 </head>
 
 <body>
-Input: <input type="number" id="input" value="input"><br>
-<input type="submit" id="submit" value="submit"><br><br>
+<form>
+    Input: <input type="number" id="input" value="input"><br>
+    <input type="submit" id="submit" value="submit"><br><br>
+</form>
 <div id="output"></div>
 <div id="errorMsg"></div>
 
@@ -34,7 +36,8 @@ Input: <input type="number" id="input" value="input"><br>
 var submitEl = document.getElementById("submit");
 submitEl.addEventListener("click", almostPi);
 
-function almostPi() {
+function almostPi(e) {
+    e.preventDefault();
     var outputEl = document.getElementById("output");
     outputEl.innerHTML = "";
     var errorMsgEl = document.getElementById("errorMsg");

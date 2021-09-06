@@ -29,16 +29,19 @@
     </style>
 </head>
 <body>
-Input Velocity: <input type="number" id="inputVelocity" value=""><br>
-<input type="submit" id="submit" value="submit"><br><br>
-<div id="outputVelocity"></div>
-<div id="errorMsg"></div>
+    <form>
+        Input Velocity: <input type="number" id="inputVelocity" value=""><br>
+        <input type="submit" id="submit" value="submit"><br><br>
+    </form>
+    <div id="outputVelocity"></div>
+    <div id="errorMsg"></div>
 
 <script>
 let submitEl = document.getElementById('submit');
 submitEl.addEventListener('click', getMass);
 
-function getMass() {
+function getMass(e) {
+    e.preventDefault();
     let outputVelocityEl = document.getElementById('outputVelocity');
     outputVelocityEl.innerHTML = "";
 
