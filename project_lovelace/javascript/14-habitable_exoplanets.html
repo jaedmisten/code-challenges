@@ -62,13 +62,10 @@ function getHabitability(e) {
 
     let habitability = "";
     if (distance < innerRadius) {
-        console.log('too hot');
         habitability = 'too hot';
     } else if (distance > innerRadius && distance < outerRadius) {
-        console.log('just right');
         habitability = 'just right';
     } else if (distance > outerRadius) {
-        console.log('too cold');
         habitability = 'too cold';
     }
 
