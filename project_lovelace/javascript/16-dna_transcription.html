@@ -1,0 +1,71 @@
+<!--
+ * 10/22/2021
+ * Project Lovelace #6 - https://projectlovelace.net/problems/dna-transcription/
+ *
+ * Take input of a string of ATCG characters representing a DNA sequence.
+ * Return output of the RNA sequence corresponding to the input DNA sequence.
+ * 
+ * DNA sequence can be stored on a computer as a string of ATCG characters.
+ * The RNA sequence is equal to the DNA sequence with all instances of T replaced with a U (uracil) 
+ * and the sequence is reversed.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DNA Transcription</title>
+    <style>
+        #outputRna {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #errorMsg {
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<form id="inputDnaForm"> 
+    Input DNA: <input type="text" id="dna" value=""><br>
+    <input type="submit" id="submit" value="submit">
+</form>
+<br>
+<div id="outputRna"></div>
+<div id="errorMsg"></div>
+
+<script type="text/javascript">
+let submitEl = document.getElementById('submit');
+submitEl.addEventListener('click', getRna);
+
+function getRna(e) {
+    e.preventDefault();
+
+    let dnaEl = document.getElementById('dna');
+    let dna = dnaEl.value.trim();
+
+    let errorMsgEl = document.getElementById('errorMsg');
+    errorMsgEl.innerHTML = "";
+
+    let outputEl = document.getElementById('outputRna');
+    outputEl.innerHTML = "";
+
+    let rna = "";
+    for (let i = dna.length - 1; i >= 0; i--) {
+        if (dna[i].toUpperCase() != "A" && dna[i].toUpperCase() != "T" && dna[i].toUpperCase() != "C" && dna[i].toUpperCase() != "G") {
+            errorMsgEl.innerHTML = "Error: Incorrect input";
+            return;
+        }
+        if (dna[i].toUpperCase() == "T") {
+            rna += "U";
+        } else {
+            rna += dna[i].toUpperCase();
+        }
+    }
+    outputEl.innerHTML = rna;
+}
+</script>
+</body>
+</html>
