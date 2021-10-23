@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- 
+ * 10/23/2021
+ * Project Lovelace: https://projectlovelace.net/problems/chaos/
+ * Take a parameter input of r and calculate the first 51 values of the logistic map.
+ * logistic map: xn+1 = r * xn * (1 − xn)
+ -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chaos</title>
+    <style>
+        #errorMsg {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<form id="populationGrowthForm">
+    Input: <input type="number" step=".01" id="input" name="input" value=""><br>
+    <input type="submit" id="submit" name="submit" value="submit">
+</form>
+<br>
+<div id="output"></div>
+<div id="errorMsg"></div>
+
+<script>
+let submitEl = document.getElementById('submit');
+submitEl.addEventListener('click', printLogisticMapValues);
+
+function printLogisticMapValues(e) {
+    e.preventDefault();
+
+    let outputEl = document.getElementById('output');
+    outputEl.innerHTML = "";
+
+    let errorMsgEl = document.getElementById('errorMsg');
+    errorMsgEl.innerHTML = "";
+
+    let inputEl = document.getElementById('input');
+    let r = inputEl.value;
+
+    if (isNaN(r) || r <= 0) {
+        errorMsgEl.innerHTML = "Input Error: Input must be a number greater than 0.";
+        return;
+    }
+
+    let x = .5;
+    let output = '[' + x
+    for (let i = 1; i <= 50; i++) {
+        let xn = r * x * (1 - x);
+        output += ", " + xn.toFixed(6);
+        x = xn;
+    }
+    output += ']'
+    outputEl.innerHTML = output;
+}
+</script>
+</body>
+</html>
