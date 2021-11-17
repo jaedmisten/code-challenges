@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+ * 11/17/2021
+ * https://projectlovelace.net/problems/babylonian-square-roots/
+ *
+ * Calculate the square root of input using the babylonian square root method.
+-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Babylonian Square Roots</title>
+    <style>
+        #output {
+            font-size: 18px;
+        }
+        #errorMsg {
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        Input: <input type="number" id="num" name="num" value=""><br>
+        <input type="submit" id="submit" name="submit" value="Submit">
+    </form>
+    <br>
+    <div id="output"></div>
+    <div id="errorMsg"></div>
+
+<script>
+let submitEl = document.getElementById("submit");
+submitEl.addEventListener('click', getSquareRoot);
+
+let outputEl = document.getElementById("output");
+let errorMsgEl = document.getElementById("errorMsg");
+
+function getSquareRoot(e) {
+    e.preventDefault();
+    outputEl.innerHTML = "";
+    errorMsgEl.innerHTML = "";
+
+    let inputEl = document.getElementById("num");
+    let s = inputEl.value;
+    if (isNaN(s) || s <= 0) {
+        errorMsgEl.innerHTML = "Input must be a number that is greater than 0.";
+        return;
+    }
+    s = parseInt(s);
+
+    let guess = s/4;
+    while ((guess * guess) !== s) {
+        guess = (guess + s/guess)/2;
+        let difference = s - (guess * guess);
+        if (difference <= 0.00000000001 && difference > -.00000000001) {
+            break;
+        }
+    }
+    outputEl.innerHTML = guess;
+}
+</script>
+</body>
+</html>
