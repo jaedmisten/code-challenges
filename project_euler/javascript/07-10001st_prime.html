@@ -18,8 +18,8 @@
 <script>
 let lastPrimeNum = 0;
 let primeCounter = 1;
-for (let i = 3; primeCounter <= 10000; i = i + 2) {
-    for (let j = 3; j <= i; j = j + 2) {
+for (let i = 3; primeCounter <= 10000; i += 2) {
+    for (let j = 3; j <= i; j += 2) {
         if (j === i) {
             lastPrimeNum = i;
             primeCounter++;  

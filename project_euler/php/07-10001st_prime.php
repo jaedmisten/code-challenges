@@ -10,8 +10,8 @@
 
 $primeCounter = 1;   // First prime number is 2. The rest of the prime numbers are odd.
 $lastPrimeNum = 0;
-for ($i = 3; $primeCounter <= 10000; $i = $i + 2) {
-    for ($j = 3; $j <= $i; $j = $j + 2) {
+for ($i = 3; $primeCounter <= 10000; $i += 2) {
+    for ($j = 3; $j <= $i; $j += 2) {
         if ($j === $i) {
             $lastPrimeNum = $i;
             $primeCounter++;
