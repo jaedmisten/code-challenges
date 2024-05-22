@@ -79,10 +79,10 @@ function getResistance(e) {
     resistanceEl.value = '';
 
     let errorMsgEl = document.getElementById('errorMsg');
-    errorMsgEl.value = '';
+    errorMsgEl.innerHTML = '';
 
     let inputEl = document.getElementById('input');
-    let input = inputEl.value;
+    let input = inputEl.value.trim();
 
     if (input[0] != '[' || input[input.length - 1] != ']') {
         errorMsgEl.innerHTML = "Error input: The input must begin with '[' and end with ']'.";
