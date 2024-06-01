@@ -45,10 +45,10 @@ let words = [
 
 words.forEach((word) => {
     console.log(word);
-    console.log(checkStrings(word));
+    console.log(checkString(word));
 });
 
-function checkStrings(word) {
+function checkString(word) {
     word = word.toLowerCase();
     if (word.substring(0, 4) === 'java' && !word.includes('javascript')) {
         return 'car';
