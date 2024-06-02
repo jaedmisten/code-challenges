@@ -1,6 +1,6 @@
 <?php
-/* 
- * 7/31/2019
+/*
+ * 6/1/2019
  * 
  * Java is to JavaScript as car is to carpet.
  * 
@@ -11,33 +11,44 @@
  * Otherwise, return carpet.
  * Input matching should be case insensitive.
  */
+$words = [
+    'java',
+    'javafx',
+    'javabeans',
+    'java-stream',
+    'java-script',
+    'java-8',
+    'java.util.scanner',
+    'java-avascript',
+    'JAVA-SCRIPTING',
+    'javacarpet',
+    'javascript',
+    'javascript-events',
+    'facebook-javascript-sdk',
+    'javajavascript',
+    'jquery',
+    'python',
+    'rx-java',
+    'java-api-for-javascript',
+    'not-java',
+    'JAVASCRIPTING',
+    'Jessie Andrew Edmisten',
+    'Jessie Andrew JavAsCrIpT Edmisten',
+];
 
-$inputStrings = ['java', 'javafx', 'javabeans', 'java-stream', 'java-script', 'java-8', 'java.util.scanner', 
-                 'java-avascript', 'JAVA-SCRIPTING', 'javacarpet', 'JAVACARPET', 'javascript', 'javascript-events',
-                 'facebook-javascript-sdk', 'javajavascript', 'jquery', 'python', 'rx-java', 'java-api-for-javascript',
-                 'not-java', 'JAVASCRIPTING', 'JaVaScRiPtInG'];
-
-for ($i = 0; $i < count($inputStrings); $i++) {
-    echo $inputStrings[$i] . '<br>';
-    echo testString($inputStrings[$i]);
-    echo '<br><br>';
+foreach($words as $word) {
+    echo "$word<br>";
+    echo checkString($word);
+    echo "<br><br>";
 }
 
-function testString($string) {
-    $string = strtolower($string);
-    if (substr($string, 0, 4) == 'java') {
-        if (strstr($string, "javascript")) {
-            // String started with 'java' and included 'javascript'.
-            return 'carpet';
-        }
-
-        // String started with 'java' and did not include 'javascript'.
+function checkString($word) {
+    $word = strtolower($word);
+    if (substr($word, 0, 4) === 'java' && !strstr($word, 'javascript')) {
         return 'car';
     }
 
-    // String did not start with 'java'.
     return 'carpet';
 }
- 
 
 ?>
