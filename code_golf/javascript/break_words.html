@@ -1,0 +1,46 @@
+<!--
+ * 12/16/2024
+ * Break a word into vowels and consonants
+ * https://codegolf.stackexchange.com/questions/273368/break-a-word-into-vowels-and-consonants
+ * 
+ * Given an string n, output two strings,
+ * namely the string consisting of vowels "a", "e", "i", "o", and "u",
+ * and the string consisting of consonants.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break Words</title>
+</head>
+<body>
+    
+<script>
+let words = [
+    'Environment',
+    'PyThOn',
+    'nAsA',
+    'ReVoLuTiOn',
+    'jAvAsCrIpT',
+    'WiNe',
+    'MiXeD',
+    'tEaM',
+    'HeArT',
+    'cOdInG',   
+];
+
+words.forEach(w => {
+    console.log(w);
+    console.log(breakWord(w));
+    console.log('');
+});
+
+function breakWord(word) {
+    let vowels = word.replace(/[^aeiou]/gi, '');
+    let consonants = word.replace(/[aeiou]/gi, '');
+    return [vowels, consonants];
+}
+</script>
+</body>
+</html>
