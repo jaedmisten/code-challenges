@@ -1,0 +1,35 @@
+<!--
+ * 2025-04-02
+ * Reversing of Words
+ * Code Golf link: https://codegolf.stackexchange.com/questions/121149/reversing-of-words
+ *
+ * Given a string that contains words separated by single space, reverse the words in the string.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reversing Of Words</title>
+</head>
+<body>
+
+<script>
+let strings = [
+    "Man bites dog",
+    "The quick brown fox jumps over the lazy dog",
+    "Hello world  ",
+    "  Nothing Changes If Nothing Changes   ",
+];
+strings.forEach(s => {
+    console.log(s);
+    console.log(reverseWords(s));
+    console.log('');
+});
+
+function reverseWords(s) {
+    return s.trim().split(' ').reverse().join(' ');
+}
+</script>
+</body>
+</html>
