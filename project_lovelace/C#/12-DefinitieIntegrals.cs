@@ -16,10 +16,10 @@ namespace DefiniteIntegrals
         static void Main(string[] args)
         {
             Console.Write("Input list of rectangles heights: ");
-            var inputTemps = Console.ReadLine();
-            inputTemps = inputTemps.Trim(new char[] { '[', ']' });
-            inputTemps = inputTemps.Replace(" ", string.Empty);
-            var temps = inputTemps.Split(',');
+            var inputHeights = Console.ReadLine();
+            inputHeights = inputHeights.Trim(new char[] { '[', ']' });
+            inputHeights = inputHeights.Replace(" ", string.Empty);
+            var temps = inputHeights.Split(',');
 
             Console.Write("Input rectangle width: ");
             var width = Console.ReadLine();
