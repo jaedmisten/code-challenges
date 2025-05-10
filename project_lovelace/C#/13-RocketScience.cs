@@ -28,7 +28,6 @@ namespace RocketScience
                 try
                 {
                     escapeVelocity = double.Parse(Console.ReadLine());
-                    //Console.WriteLine("escapeVelocity: " + escapeVelocity);
                     if (escapeVelocity <= 0)
                     {
                         Console.WriteLine("Input must be a number greater than 0.");
