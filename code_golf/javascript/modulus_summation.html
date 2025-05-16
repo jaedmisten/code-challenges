@@ -1,0 +1,34 @@
+<!--
+ * 2025-05-16
+ * Code Golf: Modulus Summation
+ * https://codegolf.stackexchange.com/questions/150563/modulus-summation?noredirect=1&lq=1
+ * For this sequence, you take all the positive integers m less than the input n, 
+ * and take the sum of n modulo each m. In other words:
+ * ∑(x % k) from k=1 to k=x
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulus Summation</title>
+</head>
+<body>
+    
+<script>
+console.log(getModulusSummation(14));
+console.log(getModulusSummation(9));
+console.log(getModulusSummation(52));
+
+function getModulusSummation(num) {
+    let modulusSummation = 0;
+    for (let i = 1; i < num; i++) {
+        let remainder = num % i;
+        modulusSummation += remainder;
+    }
+
+    return modulusSummation;
+}
+</script>
+</body>
+</html>
