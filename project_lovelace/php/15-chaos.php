@@ -5,7 +5,7 @@
  * Take a parameter input of r and calculate the first 51 values of the logistic map.
  * logistic map: xn+1 = r * xn * (1 − xn)
  */
-if (isset($_POST["input"]) && is_numeric($_POST["input"]) && $_POST["input"] > 0) {
+if (isset($_POST["input"]) && is_numeric($_POST["input"]) && $_POST["input"] > 0 && $_POST["input"] <= 4) {
     $r = $_POST["input"];
     $x = .5;
 
@@ -17,7 +17,7 @@ if (isset($_POST["input"]) && is_numeric($_POST["input"]) && $_POST["input"] > 0
     }
     $output .= "]";
 } else {
-    $errorMsg = "Input Error: Input must be a number greater than 0.";
+    $errorMsg = "Input Error: Input must be a number greater than 0 and less than 4.";
 }
 
 

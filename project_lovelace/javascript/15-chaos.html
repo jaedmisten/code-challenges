@@ -42,8 +42,8 @@ function printLogisticMapValues(e) {
     let inputEl = document.getElementById('input');
     let r = inputEl.value;
 
-    if (isNaN(r) || r <= 0) {
-        errorMsgEl.innerHTML = "Input Error: Input must be a number greater than 0.";
+    if (isNaN(r) || r <= 0 || r > 4) {
+        errorMsgEl.innerHTML = "Input Error: Input must be a number greater than 0 and less than 4.";
         return;
     }
 
