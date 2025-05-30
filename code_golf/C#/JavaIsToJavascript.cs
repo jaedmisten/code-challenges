@@ -1,55 +1,49 @@
-/* 
- * 8/15/2019
+/*
+ * 2025-05-30
  * 
- * Java is to JavaScript as car is to carpet.
+ * Code Golf: Java is to Javascript as Car is to Carpet
+ * https://codegolf.stackexchange.com/questions/132272/java-is-to-javascript-as-car-is-to-carpet
  * 
- * code golf link:  https://codegolf.stackexchange.com/questions/132272/java-is-to-javascript-as-car-is-to-carpet
- * 
- * Write a program which takes in a string as input. Return car if the string begins with "Java" 
- * and does not include "JavaScript". 
+ * Write a program which takes in a string as input.
+ * Return car if the string begins with "Java" and does not include "JavaScript". 
  * Otherwise, return carpet.
- * Input matching should be case insensitive.
+ * Input matching should be case insensitive
  */
-
-using System;
-
-namespace JavaIsToJavascript
+string[] words =
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string[] words = {"java", "javafx", "javabeans", "JavaBeanS", "java-stream", "java-script", "java-8","java.util.scanner",
-                "java-avascript", "JAVA-SCRIPTING", "javacarpet", "javascript","javascript-events", "facebook-javascript-sdk",
-                "javajavascript", "jquery", "python", "rx-java", "java-api-for-javascript", "not-java", "JAVASCRIPTING"};
+    "java",
+    "javafx",
+    "JaVaFX",
+    "javabeans",
+    "java-stream",
+    "java-script",
+    "java-8",
+    "java.util.scanner",
+    "java-avascript",
+    "JAVA-SCRIPTING",
+    "javacarpet",
+    "carpet:",
+    "javascript",
+    "javascript-events",
+    "facebook-javascript-sdk",
+    "javajavascript",
+    "jquery",
+    "python",
+    "rx-java",
+    "java-api-for-javascript",
+    "not-java",
+    "JAVASCRIPTING",
+    "Jessie Edmisten",
+};
 
-            foreach (string word in words)
-            {
-                Console.WriteLine(word);
-                Console.WriteLine(testWords(word));
-                Console.WriteLine();
-            }
+foreach (string word in words)
+{
+    Console.WriteLine(word);
+    Console.WriteLine(BeginsWithJavaAndDoesNotIncludeJavascript(word));
+    Console.WriteLine();
+}
 
-
-            string testWords(string word)
-            {
-                word = word.ToLower();
-                if (word.Substring(0, 4).Equals("java"))
-                {
-                    if (word.IndexOf("javascript") == -1)
-                    {
-                        // String began with "java" and did not include "javascript".
-                        return "car";
-                    }
-
-                    // String began with "java" and included "javascript".
-                    return "carpet";
-                }
-
-                // String did not begin with "java".
-                return "carpet";
-            }
-        }
-        
-    }
+string BeginsWithJavaAndDoesNotIncludeJavascript(string s)
+{
+    return s.ToLower().StartsWith("java") && !s.ToLower().Contains("javascript") ? "car" : "carpet";
 }
