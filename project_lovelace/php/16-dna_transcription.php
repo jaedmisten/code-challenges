@@ -1,7 +1,7 @@
 <?php
 /*
  * 10/22/2021
- * Project Lovelace #6 - https://projectlovelace.net/problems/dna-transcription/
+ * Project Lovelace #16 - https://projectlovelace.net/problems/dna-transcription/
  *
  * Take input of a string of ATCG characters representing a DNA sequence.
  * Return output of the RNA sequence corresponding to the input DNA sequence.
